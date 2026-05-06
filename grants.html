@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #1a1a1e; --white: #fdfcf8; --teal: #1a5c4a; --teal-soft: #eaf4f0;
+  --gold: #b8975a; --gold-soft: #f7f0e4; --muted: #6b6b72; --border: #ddd8cc;
+  --navy: #1a2a4a; --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', system-ui, sans-serif; --red: #c0392b;
+}
+body { font-family: var(--sans); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.7; }
+.hero { background: var(--white); padding: 80px 60px; border-bottom: 1px solid var(--border); }
+.hero-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
+.hero h1 { font-family: var(--serif); font-size: clamp(36px, 4.5vw, 62px); font-weight: 300; color: var(--ink); line-height: 1.1; margin-bottom: 28px; max-width: 760px; }
+.hero h1 em { font-style: italic; color: var(--teal); }
+.hero-sub { font-size: 16px; font-weight: 300; color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 40px; }
+.hero-proof { display: flex; gap: 40px; flex-wrap: wrap; }
+.proof-item { display: flex; flex-direction: column; }
+.proof-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--teal); line-height: 1; }
+.proof-label { font-size: 12px; font-weight: 300; color: var(--muted); margin-top: 4px; }
+.strip { background: var(--teal); padding: 24px 60px; }
+.strip-inner { display: flex; align-items: center; gap: 16px; }
+.strip-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.strip p { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.85); }
+.strip strong { color: #fff; font-weight: 500; }
+.problems { padding: 80px 60px; background: var(--white); }
+.section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--ink); margin-bottom: 48px; line-height: 1.2; }
+.problems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.prob-card { background: var(--white); padding: 36px 28px; display: flex; flex-direction: column; }
+.prob-card .quote { font-family: var(--serif); font-size: 17px; font-weight: 400; color: var(--ink); line-height: 1.6; font-style: italic; margin-bottom: 20px; flex: 1; }
+.prob-card .quote::before { content: '\201C'; color: var(--gold); font-size: 28px; line-height: 0.5; display: block; margin-bottom: 12px; }
+.prob-tag { font-size: 12px; font-weight: 500; color: var(--muted); border-top: 1px solid var(--border); padding-top: 16px; }
+.prob-cost { font-size: 12px; font-weight: 500; color: var(--red); margin-top: 6px; }
+.reframe { background: var(--navy); padding: 80px 60px; }
+.reframe-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 72px; align-items: center; }
+.reframe h2 { font-family: var(--serif); font-size: 42px; font-weight: 300; color: #fff; line-height: 1.15; }
+.reframe h2 em { font-style: italic; color: rgba(255,255,255,0.4); }
+.reframe-body p { font-family: var(--serif); font-size: 19px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 20px; }
+.reframe-body p:last-child { margin-bottom: 0; }
+.reframe-body strong { color: #fff; font-weight: 500; }
+.grant-pill { display: inline-flex; align-items: center; gap: 10px; background: rgba(184,151,90,0.15); border: 1px solid rgba(184,151,90,0.3); padding: 12px 20px; margin-top: 28px; }
+.grant-pill span { font-size: 13px; font-weight: 400; color: var(--gold); }
+.grant-pill .amount { font-family: var(--serif); font-size: 22px; font-weight: 300; color: #fff; }
+.change { padding: 80px 60px; background: var(--teal-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.change-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.change-card { background: var(--white); border: 1px solid var(--border); padding: 32px 28px; }
+.before-after { display: flex; flex-direction: column; gap: 16px; }
+.before { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; padding-left: 12px; border-left: 2px solid var(--border); }
+.before-label { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+.after { font-size: 13px; font-weight: 400; color: var(--teal); line-height: 1.7; padding-left: 12px; border-left: 2px solid var(--teal); }
+.after-label { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; color: var(--teal); text-transform: uppercase; margin-bottom: 6px; }
+.change-card h3 { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 20px; }
+.how { padding: 80px 60px; background: var(--white); }
+.how-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; position: relative; }
+.how-flow::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 1px; background: var(--border); z-index: 0; }
+.how-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+.step-circle { width: 56px; height: 56px; border-radius: 50%; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.step-circle span { font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--teal); }
+.how-step h3 { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+.how-step p { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.75; }
+.grant { background: var(--gold-soft); padding: 80px 60px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.grant-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start; }
+.grant-left p { font-family: var(--serif); font-size: 19px; color: var(--ink); line-height: 1.8; margin-bottom: 16px; }
+.grant-left p strong { color: var(--teal); font-weight: 500; }
+.grant-components { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.grant-comp { background: var(--white); padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
+.grant-comp-name { font-size: 14px; font-weight: 400; color: var(--ink); }
+.grant-comp-sub { font-size: 12px; font-weight: 300; color: var(--muted); margin-top: 2px; }
+.grant-comp-amount { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--teal); flex-shrink: 0; }
+.grant-total { background: var(--teal); padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
+.grant-total-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); }
+.grant-total-amount { font-family: var(--serif); font-size: 28px; font-weight: 300; color: #fff; }
+.eligibility { margin-top: 24px; }
+.elig-title { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.elig-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 300; color: var(--muted); margin-bottom: 8px; }
+.elig-item::before { content: '\2713'; color: var(--teal); font-weight: 500; flex-shrink: 0; }
+.cta { background: var(--teal); padding: 80px 60px; }
+.cta-inner { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: center; }
+.cta h2 { font-family: var(--serif); font-size: 42px; font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 20px; }
+.cta h2 em { font-style: italic; color: rgba(255,255,255,0.45); }
+.cta p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.8; }
+.cta-contact { border: 1px solid rgba(255,255,255,0.15); padding: 36px 32px; }
+.cta-contact-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 24px; }
+.cta-contact-item { margin-bottom: 16px; }
+.cta-contact-item .cl { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 3px; }
+.cta-contact-item .cv { font-size: 16px; font-weight: 300; color: #fff; }
+.cta-note { margin-top: 24px; font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
+footer { background: var(--ink); padding: 22px 60px; display: flex; justify-content: space-between; align-items: center; }
+.f-logo { font-family: var(--serif); font-size: 18px; color: rgba(255,255,255,0.35); }
+.f-tag { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; }
+@media (max-width: 800px) {
+  .hero, .problems, .reframe, .change, .how, .grant, .cta { padding: 48px 28px; }
+  .problems-grid, .change-grid { grid-template-columns: 1fr; }
+  .reframe-inner, .grant-inner, .cta-inner { grid-template-columns: 1fr; }
+  .how-flow { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .how-flow::before { display: none; }
+  .strip { padding: 20px 28px; }
+  footer { flex-direction: column; gap: 8px; padding: 20px 28px; }
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="hero-tag">For Singapore SME Owners &amp; Leaders</div>
+  <h1>Your people problems are <em>more expensive</em> than you think.</h1>
+  <p class="hero-sub">Staff turnover, managers who can't manage, teams that don't communicate, founders who can't step back. These are not soft problems. They are profit problems. And the government will pay up to 70% to fix them.</p>
+  <div class="hero-proof">
+    <div class="proof-item"><span class="proof-num">70%</span><span class="proof-label">government funded, up to S$150K per company</span></div>
+    <div class="proof-item"><span class="proof-num">20+</span><span class="proof-label">years transforming teams across Singapore</span></div>
+    <div class="proof-item"><span class="proof-num">Mar '26</span><span class="proof-label">new grant launched — most SMEs don't know yet</span></div>
+  </div>
+</section>
+<section class="strip">
+  <div class="strip-inner">
+    <div class="strip-dot"></div>
+    <p>The <strong>Enterprise Workforce Transformation Package (EWTP)</strong> launched in March 2026. It funds workforce transformation, leadership development, and capability building for Singapore SMEs — up to S$150,000 per company.</p>
+  </div>
+</section>
+<section class="problems">
+  <div class="section-label">Sound Familiar?</div>
+  <div class="section-title">The conversations happening in your business right now</div>
+  <div class="problems-grid">
+    <div class="prob-card"><div class="quote">My managers are great at their jobs but terrible at leading people. I spend half my day firefighting problems they should be solving themselves.</div><div class="prob-tag">Every founder, eventually</div><div class="prob-cost">Cost: your time, your sanity, your growth ceiling</div></div>
+    <div class="prob-card"><div class="quote">We promoted our best people into management and now we've lost a great individual contributor and gained a struggling manager. Nobody wins.</div><div class="prob-tag">Classic SME scaling trap</div><div class="prob-cost">Cost: team morale, productivity, and often the person</div></div>
+    <div class="prob-card"><div class="quote">Every department thinks it's somebody else's problem. By the time it gets to me, it's a crisis. I can't keep being the answer to everything.</div><div class="prob-tag">The bottleneck founder</div><div class="prob-cost">Cost: S$50K–200K in lost productivity annually</div></div>
+  </div>
+</section>
+<section class="reframe">
+  <div class="reframe-inner">
+    <div>
+      <h2>These are not people problems. <em>They are business problems.</em></h2>
+      <div class="grant-pill"><span>Government pays up to</span><span class="amount">S$150,000</span><span>to fix them</span></div>
+    </div>
+    <div class="reframe-body">
+      <p>Every business that cannot scale has the same root cause: the humans are not equipped for the next level. The founder is the bottleneck. The managers are stuck. The teams are not aligned.</p>
+      <p>This is not about running workshops or sending people on courses. <strong>This is about transforming how your organisation works</strong> — so you can grow without everything depending on you.</p>
+      <p>The Singapore government now funds exactly this kind of transformation through EWTP. <strong>Up to 70% of costs are covered</strong> — which means the question is no longer "can we afford this?" but "can we afford not to?"</p>
+    </div>
+  </div>
+</section>
+<section class="change">
+  <div class="section-label">What Changes</div>
+  <div class="section-title">Before and after working with 180co.</div>
+  <div class="change-grid">
+    <div class="change-card"><h3>Decision making</h3><div class="before-after"><div class="before"><div class="before-label">Before</div>Everything flows to the founder or CEO. Phone rings constantly. Nothing moves without you.</div><div class="after"><div class="after-label">After</div>Teams make decisions confidently within agreed frameworks. You are consulted, not required for everything.</div></div></div>
+    <div class="change-card"><h3>Manager effectiveness</h3><div class="before-after"><div class="before"><div class="before-label">Before</div>Your best operators struggle to lead people. They revert to doing the work themselves instead of developing their teams.</div><div class="after"><div class="after-label">After</div>Managers coach, develop, and retain their people. Staff turnover drops. Team performance improves without your involvement.</div></div></div>
+    <div class="change-card"><h3>Team alignment</h3><div class="before-after"><div class="before"><div class="before-label">Before</div>Departments silo. Problems get passed around. Blame culture creeps in. Speed slows as the team grows.</div><div class="after"><div class="after-label">After</div>Cross-functional teams solve problems together. Accountability is clear. The business moves faster as it gets bigger, not slower.</div></div></div>
+  </div>
+</section>
+<section class="how">
+  <div class="section-label">The Process</div>
+  <div class="section-title">How we work with you</div>
+  <div class="how-flow">
+    <div class="how-step"><div class="step-circle"><span>01</span></div><h3>Discovery Call</h3><p>60 minutes. We understand your business, your people challenges, and what success looks like. No cost, no commitment.</p></div>
+    <div class="how-step"><div class="step-circle"><span>02</span></div><h3>Grant Check</h3><p>We confirm your EWTP eligibility and identify which components apply. Most SMEs qualify — we handle the complexity.</p></div>
+    <div class="how-step"><div class="step-circle"><span>03</span></div><h3>Custom Programme</h3><p>We design a bespoke transformation programme for your specific context. Not a template. Built for your business.</p></div>
+    <div class="how-step"><div class="step-circle"><span>04</span></div><h3>Deliver &amp; Measure</h3><p>We work alongside your team for 90 days or more. You see results before the engagement ends — not just reports.</p></div>
+  </div>
+</section>
+<section class="grant">
+  <div class="grant-inner">
+    <div class="grant-left">
+      <div class="section-label">The Grant</div>
+      <div class="section-title">What EWTP actually covers</div>
+      <p>EWTP stands for the <strong>Enterprise Workforce Transformation Package</strong>. It is Singapore's newest and most generous workforce grant, launched in March 2026 by WSG, MOM, and SSG.</p>
+      <p>It has three components that can be stacked — meaning the right programme can unlock <strong>up to S$150,000 per company</strong>, with the government covering up to 70% of costs.</p>
+      <div class="eligibility">
+        <div class="elig-title">Your company likely qualifies if you</div>
+        <div class="elig-item">Are registered and operating in Singapore</div>
+        <div class="elig-item">Have at least 3 local (SC or PR) employees</div>
+        <div class="elig-item">Have not yet signed with a consultant for this scope</div>
+        <div class="elig-item">Want to genuinely transform how your team works</div>
+      </div>
+    </div>
+    <div>
+      <div class="grant-components">
+        <div class="grant-comp"><div><div class="grant-comp-name">Component 1 — Workforce Consultancy</div><div class="grant-comp-sub">Assess needs, redesign roles, build strategy</div></div><div class="grant-comp-amount">S$50K</div></div>
+        <div class="grant-comp"><div><div class="grant-comp-name">Component 2 — Capability Building</div><div class="grant-comp-sub">Train managers, build leadership capability</div></div><div class="grant-comp-amount">S$60K</div></div>
+        <div class="grant-comp"><div><div class="grant-comp-name">Component 3 — Workforce Tech</div><div class="grant-comp-sub">AI coaching platform, analytics tools</div></div><div class="grant-comp-amount">S$90K</div></div>
+        <div class="grant-total"><div class="grant-total-label">Maximum total per company</div><div class="grant-total-amount">S$150,000</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta">
+  <div class="cta-inner">
+    <div>
+      <h2>Find out if your SME qualifies. <em>It takes 30 minutes.</em></h2>
+      <p>We offer a complimentary 30-minute eligibility check. We will tell you honestly whether EWTP applies to your situation, what it could cover, and what the process looks like. No obligation, no sales pitch.</p>
+      <p style="margin-top:16px;">If it is not the right fit, we will tell you that too. We only work with companies where we can genuinely make a difference.</p>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-contact-label">Book your eligibility check</div>
+      <div class="cta-contact-item"><div class="cl">Name</div><div class="cv">Trudi Chong</div></div>
+      <div class="cta-contact-item"><div class="cl">Email</div><div class="cv">trudi.chong@gmail.com</div></div>
+      <div class="cta-contact-item"><div class="cl">Website</div><div class="cv">180co.sg</div></div>
+      <div class="cta-note">Mention "EWTP" in your message and we will prioritise your enquiry. Grant applications must be submitted before engaging any consultant — get in touch before you sign anything.</div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="f-logo">180co.</div>
+  <div class="f-tag">Workforce Transformation · Singapore · 2026</div>
+</footer>
+</body>
+</html>
