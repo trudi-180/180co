@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>180co. — Trudi Chong</title>
+<link href="https://fonts.bunny.net/css?family=cormorant-garamond:300,300i,400,400i,500,500i,600,600i|jost:200,300,400,500,600" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #1a1a1e;
+    --white: #fdfcf8;
+    --teal: #1a5c4a;
+    --teal-mid: #2d7a60;
+    --teal-soft: #eaf4f0;
+    --gold: #b8975a;
+    --gold-soft: #f7f0e4;
+    --muted: #6b6b72;
+    --border: #ddd8cc;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', system-ui, sans-serif;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--teal);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+    bottom: -200px;
+    left: -100px;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.04);
+    top: -80px;
+    right: -60px;
+  }
+
+  .logo {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo span {
+    color: var(--gold);
+  }
+
+  .hero-tagline {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tagline h1 {
+    font-family: var(--serif);
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-tagline h1 em {
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .hero-tagline p {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 340px;
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-right {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 56px;
+    border-left: 1px solid var(--border);
+  }
+
+  .intro-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .intro-name {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .intro-title {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: 36px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .intro-bio {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 400px;
+  }
+
+  .credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .credential {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  .credential::before {
+    content: '';
+    width: 18px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── PIVOT SECTION ── */
+  .pivot {
+    background: var(--gold-soft);
+    padding: 80px 56px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .pivot-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .pivot h2 {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .pivot-body p {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .pivot-body p:last-child { margin-bottom: 0; }
+
+  .pivot-body strong {
+    color: var(--teal);
+    font-weight: 500;
+  }
+
+  /* ── PAIN POINTS ── */
+  .pain {
+    padding: 80px 56px;
+    background: var(--white);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .section-header .label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .section-header h2 {
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .pain-card {
+    background: var(--white);
+    padding: 36px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pain-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--teal-soft);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .pain-card h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+    min-height: 3em;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .pain-card p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .pain-card .pivot-tag {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--teal);
+    background: var(--teal-soft);
+    padding: 4px 10px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--teal);
+    padding: 80px 56px;
+  }
+
+  .services .section-header .label { color: rgba(255,255,255,0.5); }
+  .services .section-header h2 { color: #fff; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 36px 28px;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .service-card:hover {
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  .service-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .service-card h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .service-card .sub {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .service-card p {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+  }
+
+  .service-divider {
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+    margin: 20px 0;
+  }
+
+  .service-outcome {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+  }
+
+  /* ── CLIENTS / TRACK RECORD ── */
+  .track {
+    padding: 80px 56px;
+    background: var(--white);
+  }
+
+  .track-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .track-left p {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  .client-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .client-tag {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--teal);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    letter-spacing: 0.05em;
+  }
+
+  .track-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .stat-row {
+    background: var(--white);
+    padding: 24px 28px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--teal);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .stat-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    background: var(--teal-soft);
+    padding: 80px 56px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 48px;
+  }
+
+  .how-step {
+    background: var(--white);
+    padding: 32px 28px;
+  }
+
+  .step-num {
+    font-family: var(--serif);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .how-step h3 {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .how-step p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* ── CLOSING / CTA ── */
+  .closing {
+    background: var(--ink);
+    padding: 80px 56px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .closing h2 {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .closing h2 em {
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .closing p {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+
+  .contact-box {
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 36px 28px;
+  }
+
+  .contact-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .contact-item {
+    margin-bottom: 16px;
+  }
+
+  .contact-item .c-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .contact-item .c-val {
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 24px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .f-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  footer .f-tagline {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── PRINT / PDF OPTIMISED ── */
+  @media print {
+    body { font-size: 12px; }
+    .hero { min-height: auto; page-break-after: always; }
+    .services { page-break-before: always; }
+  }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 48px 32px; min-height: 60vh; }
+    .hero-right { padding: 48px 32px; }
+    .pivot { grid-template-columns: 1fr; padding: 60px 32px; }
+    .pain { padding: 60px 32px; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .services { padding: 60px 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .track { padding: 60px 32px; }
+    .track-grid { grid-template-columns: 1fr; }
+    .how { padding: 60px 32px; }
+    .how-steps { grid-template-columns: 1fr 1fr; }
+    .closing { grid-template-columns: 1fr; padding: 60px 32px; }
+    footer { padding: 24px 32px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+<style>@media print { .print-banner { display: none !important; } }</style></head>
+<body>
+<div class="print-banner" style="background:#1a5c4a;color:white;padding:12px 24px;font-family:Arial,sans-serif;font-size:13px;text-align:center;display:flex;justify-content:space-between;align-items:center;"><span>180co. — Social Impact & Family Offices</span><span>To save as PDF: File → Print → Save as PDF &nbsp;|&nbsp; <a href="#" onclick="window.print();return false;" style="color:#b8975a;font-weight:bold;">Print Now</a></span></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="logo">180co<span>.</span></div>
+    <div class="hero-tagline">
+      <h1>People are the <em>hardest</em> part of any mission.</h1>
+      <p>180co. partners with purpose-driven organisations to develop the leadership, communication, and team capability needed to create lasting impact.</p>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="intro-label">Your Guide</div>
+    <div class="intro-name">Trudi Chong</div>
+    <div class="intro-title">Founder · 180co. · Fractional Chief Learning Officer</div>
+    <p class="intro-bio">For 20+ years, I have helped organisations turn people challenges into performance breakthroughs — from scaling global tech companies to transforming family businesses and social enterprises.</p>
+    <div class="credentials">
+      <div class="credential">SMU Adjunct Lecturer — Organisational Behaviour & HR</div>
+      <div class="credential">ICF-ACC Certified Coach</div>
+      <div class="credential">Certified Soundwave Facilitator & Programme Designer</div>
+      <div class="credential">Former: Airbnb · Meta · GovTech · Starbucks · Miele · Zegna</div>
+      <div class="credential">Founder, 180co. (ACRA registered)</div>
+    </div>
+  </div>
+</section>
+
+<!-- PIVOT / REFRAME -->
+<section class="pivot">
+  <div>
+    <div class="pivot-label">The Real Problem</div>
+    <h2>Governance doesn't fail on paper.</h2>
+  </div>
+  <div class="pivot-body">
+    <p>In family offices, foundations, and social impact organisations, the frameworks are usually sound. The strategies are well-intentioned. The mission is clear.</p>
+    <p>What breaks down is the <strong>human layer</strong> — how boards communicate with management, how multi-generational stakeholders navigate differing values, how passionate teams align without burning out, how leaders transition gracefully without taking the organisation down with them.</p>
+    <p><strong>180co. works on the human layer.</strong> We build the leadership capability, communication culture, and team coherence that allows your mission to actually succeed.</p>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain">
+  <div class="section-header">
+    <span class="label">Where We Help</span>
+    <h2>Three challenges we hear most often</h2>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-num">01</div>
+      <h3>Stakeholder Communication Breakdowns</h3>
+      <p>Boards and management talk past each other. Family members and professional trustees operate on different assumptions. Grantors and grantees struggle to align. Relationships fray even when everyone means well.</p>
+      <span class="pivot-tag">→ Leadership Coaching + Facilitation</span>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">02</div>
+      <h3>Leadership Transitions Without a Net</h3>
+      <p>Next-generation family members stepping into leadership roles. Executive directors inheriting legacy cultures. Professionals moving from corporate to purpose-driven contexts. Transitions managed badly derail organisations.</p>
+      <span class="pivot-tag">→ Young Leader Accelerator + Coaching</span>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">03</div>
+      <h3>High-Passion, Low-Cohesion Teams</h3>
+      <p>Mission-driven teams attract brilliant, committed people who often work in silos. Decision-making is slow. Accountability is murky. The founder or ED becomes the bottleneck. Burnout is common.</p>
+      <span class="pivot-tag">→ Team Alignment Workshop + Systems</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="section-header">
+    <span class="label">What We Do</span>
+    <h2>Three ways to work together</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <h3>Leadership Coaching</h3>
+      <div class="sub">Individual · 3–6 Months</div>
+      <p>ICF-methodology coaching for leaders navigating transitions, stakeholder complexity, or performance challenges. Bi-weekly sessions plus ad-hoc support for high-stakes conversations.</p>
+      <div class="service-divider"></div>
+      <div class="service-outcome">Best for next-generation leaders, executive directors, and family office principals who want a trusted thinking partner.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <h3>Team Alignment Workshop</h3>
+      <div class="sub">Group · 1–2 Days</div>
+      <p>Custom-designed facilitation for boards, management teams, or cross-generational groups. Focus on how we communicate, how we make decisions, and how we hold each other accountable.</p>
+      <div class="service-divider"></div>
+      <div class="service-outcome">Best for boards, leadership teams, and multi-stakeholder groups who need to find shared ground and work more effectively together.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <h3>Transformation Sprint</h3>
+      <div class="sub">Organisation · 90 Days</div>
+      <p>An embedded engagement where 180co. partners deeply with your organisation — assessing needs, designing interventions, building capability, and creating systems that last beyond the engagement.</p>
+      <div class="service-divider"></div>
+      <div class="service-outcome">Best for organisations in active transition who need more than a workshop — a trusted partner who understands context and delivers change.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section class="track">
+  <div class="section-header">
+    <span class="label">Track Record</span>
+    <h2>20+ years of transformation across sectors</h2>
+  </div>
+  <div class="track-grid">
+    <div class="track-left">
+      <p>Every organisation I have worked with had a people challenge underneath a business challenge. The strategy was usually right. The execution broke down because the humans were not aligned, not equipped, or not supported.</p>
+      <p style="font-size:13px; color:var(--muted); font-family:var(--sans); font-weight:300; line-height:1.8; margin-top:-16px; margin-bottom:28px;">I have worked across tech, luxury retail, F&B, government, and private enterprise — which means I see patterns across contexts that single-sector specialists miss.</p>
+      <div class="client-logos">
+        <span class="client-tag">Airbnb</span>
+        <span class="client-tag">Meta</span>
+        <span class="client-tag">GovTech Singapore</span>
+        <span class="client-tag">Starbucks</span>
+        <span class="client-tag">Watsons</span>
+        <span class="client-tag">Miele</span>
+        <span class="client-tag">Zegna</span>
+        <span class="client-tag">SMU</span>
+        <span class="client-tag">Imperial Treasure</span>
+      </div>
+    </div>
+    <div class="track-right">
+      <div class="stat-row">
+        <div class="stat-num">20+</div>
+        <div class="stat-desc">Years of senior L&D and leadership development experience across Asia Pacific</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">90%+</div>
+        <div class="stat-desc">Consistent participant satisfaction scores across all facilitation engagements</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">500+</div>
+        <div class="stat-desc">Leaders coached and developed across individual and group engagements</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">ICF</div>
+        <div class="stat-desc">Coaching to international credentialing standard — rigorous, ethical, evidence-based</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="section-header">
+    <span class="label">Our Process</span>
+    <h2>How we work</h2>
+  </div>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-num">Step 01</div>
+      <h3>Discovery Conversation</h3>
+      <p>A 60-minute conversation to understand your context, challenges, and what success looks like. No cost, no commitment. Just an honest exploration.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">Step 02</div>
+      <h3>Diagnostic Assessment</h3>
+      <p>We map where the organisation or individual is today — through conversations, observation, and structured reflection — before designing any intervention.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">Step 03</div>
+      <h3>Tailored Programme</h3>
+      <p>A bespoke programme designed for your specific context. Not a template adapted. Not a workshop repurposed. Built from scratch for you.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">Step 04</div>
+      <h3>Embedded Partnership</h3>
+      <p>180co. works alongside you — not as an external vendor, but as a trusted insider who understands your people, your culture, and your mission.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="closing">
+  <div>
+    <h2>If the people are right, <em>everything else follows.</em></h2>
+    <p>Whether you are navigating a leadership transition, building a more cohesive board, or trying to unlock the potential of a passionate but misaligned team — 180co. is built for this work.</p>
+    <p style="margin-top:16px;">Reach out for a conversation. No obligation, no pitch. Just a genuine exploration of whether we are the right fit for each other.</p>
+  </div>
+  <div class="contact-box">
+    <div class="contact-label">Get in Touch</div>
+    <div class="contact-item">
+      <div class="c-label">Name</div>
+      <div class="c-val">Trudi Chong</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-label">Email</div>
+      <div class="c-val">trudi.chong@gmail.com</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-label">Website</div>
+      <div class="c-val">180co.sg</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-label">LinkedIn</div>
+      <div class="c-val">Trudi Chong</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-label">Based in</div>
+      <div class="c-val">Singapore</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">180co.</div>
+  <div class="f-tagline">Turning people challenges into lasting impact · Singapore · 2026</div>
+</footer>
+
+</body>
+</html>
