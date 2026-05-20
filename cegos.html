@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #1a1a1e; --white: #fdfcf8; --teal: #1a5c4a; --teal-soft: #eaf4f0;
+  --gold: #b8975a; --gold-soft: #f7f0e4; --muted: #6b6b72; --border: #ddd8cc;
+  --navy: #1a2a4a; --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', system-ui, sans-serif;
+}
+@page { size: A4; margin: 0; }
+html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+/* LAYOUT */
+.page { display: grid; grid-template-columns: 220px 1fr; min-height: 297mm; }
+
+/* LEFT COLUMN */
+.left { background: var(--navy); padding: 40px 28px; display: flex; flex-direction: column; gap: 32px; }
+
+.logo { font-family: var(--serif); font-size: 22px; color: #fff; letter-spacing: 0.02em; }
+.logo span { color: var(--gold); }
+
+.name-block { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; }
+.name { font-family: var(--serif); font-size: 26px; font-weight: 400; color: #fff; line-height: 1.15; margin-bottom: 6px; }
+.title { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; line-height: 1.6; text-transform: uppercase; }
+
+.left-section { }
+.left-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+
+.cred { display: flex; gap: 8px; margin-bottom: 10px; align-items: flex-start; }
+.cred-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+.cred-text { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1.55; }
+
+.client-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.client-tag { font-size: 10px; font-weight: 400; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.12); padding: 3px 8px; }
+
+.contact { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+.contact-item { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+.contact-val { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.75); }
+
+/* RIGHT COLUMN */
+.right { padding: 40px 36px; display: flex; flex-direction: column; gap: 28px; }
+
+.top-line { border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+.top-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+.top-line p { font-family: var(--serif); font-size: 15.5px; color: var(--ink); line-height: 1.7; }
+.top-line strong { color: var(--teal); font-weight: 500; }
+
+/* TOPICS */
+.topics-section { }
+.section-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
+
+.topic-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+
+.topic-card { border: 0.5px solid var(--border); padding: 12px 14px; position: relative; }
+.topic-card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(--teal); }
+.topic-cat { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+.topic-name { font-family: var(--serif); font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; line-height: 1.3; }
+.topic-desc { font-size: 11px; font-weight: 300; color: var(--muted); line-height: 1.55; }
+.topic-format { font-size: 10px; font-weight: 400; color: var(--teal); margin-top: 6px; }
+
+/* BREAKFAST TALKS */
+.talks { }
+.talk { border-bottom: 0.5px solid var(--border); padding: 11px 0; display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; }
+.talk:last-child { border-bottom: none; }
+.talk-num { font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--gold); line-height: 1.2; }
+.talk-body { }
+.talk-title { font-family: var(--serif); font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; line-height: 1.3; }
+.talk-desc { font-size: 11px; font-weight: 300; color: var(--muted); line-height: 1.55; }
+.talk-meta { font-size: 10px; color: var(--teal); margin-top: 3px; }
+
+/* DELIVERY */
+.delivery { background: var(--teal-soft); border: 0.5px solid var(--border); padding: 14px 16px; }
+.delivery-inner { display: flex; gap: 24px; }
+.del-item { flex: 1; }
+.del-label { font-size: 9px; font-weight: 500; letter-spacing: 0.15em; color: var(--teal); text-transform: uppercase; margin-bottom: 4px; }
+.del-val { font-size: 11.5px; font-weight: 300; color: var(--ink); line-height: 1.55; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- LEFT -->
+  <div class="left">
+    <div class="logo">180co<span>.</span></div>
+
+    <div class="name-block">
+      <div class="name">Trudi<br>Chong</div>
+      <div class="title">Facilitator & Executive Coach<br>Founder, 180co.</div>
+    </div>
+
+    <div class="left-section">
+      <div class="left-label">Credentials</div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">ICF-ACC Certified Coach</div></div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">Certified Soundwave Facilitator & Programme Designer</div></div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">SMU Adjunct Lecturer — Organisational Behaviour & HR</div></div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">20+ years in L&D across APAC</div></div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">90%+ participant satisfaction across all programmes</div></div>
+    </div>
+
+    <div class="left-section">
+      <div class="left-label">Past Clients</div>
+      <div class="client-grid">
+        <span class="client-tag">Airbnb</span>
+        <span class="client-tag">Meta</span>
+        <span class="client-tag">GovTech</span>
+        <span class="client-tag">Starbucks</span>
+        <span class="client-tag">Watsons</span>
+        <span class="client-tag">Miele</span>
+        <span class="client-tag">Zegna</span>
+        <span class="client-tag">SMU</span>
+        <span class="client-tag">Imperial Treasure</span>
+        <span class="client-tag">Cegos AP</span>
+      </div>
+    </div>
+
+    <div class="left-section">
+      <div class="left-label">Industries</div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">Technology & Digital</div></div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">Luxury & Premium Retail</div></div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">F&B & Hospitality</div></div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">Government & Public Sector</div></div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">Professional Services</div></div>
+    </div>
+
+    <div class="contact">
+      <div class="contact-item">Email</div>
+      <div class="contact-val">trudi.chong@gmail.com</div>
+      <div style="margin-top:8px;" class="contact-item">Website</div>
+      <div class="contact-val">180co.sg</div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+
+    <!-- TOP LINE -->
+    <div class="top-line">
+      <div class="top-label">About Trudi</div>
+      <p>Trudi Chong is a facilitator, executive coach, and L&D strategist who has spent 20+ years helping organisations build the leadership and communication capability they actually need — not the programmes they think they need. She combines <strong>deep facilitation craft</strong> with <strong>real business credibility</strong>, having built L&D functions from scratch at Airbnb, Meta, and GovTech. She is direct, engaging, and obsessively practical.</p>
+    </div>
+
+    <!-- FACILITATION TOPICS -->
+    <div class="topics-section">
+      <div class="section-label">Facilitation Topics</div>
+      <div class="topic-row">
+        <div class="topic-card">
+          <div class="topic-cat">Leadership</div>
+          <div class="topic-name">Leading People Through Transition</div>
+          <div class="topic-desc">IC to manager, manager to leader. Mindset shifts, blind spots, practical tools.</div>
+          <div class="topic-format">Half-day · Keynote · Coaching circle</div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-cat">Leadership</div>
+          <div class="topic-name">Situational Leadership in Practice</div>
+          <div class="topic-desc">Reading what each team member needs and flexing style accordingly.</div>
+          <div class="topic-format">Half-day · Workshop</div>
+        </div>
+      </div>
+      <div class="topic-row">
+        <div class="topic-card">
+          <div class="topic-cat">Communication</div>
+          <div class="topic-name">Communicating for Impact</div>
+          <div class="topic-desc">Structuring messages, stakeholder management, influence without authority.</div>
+          <div class="topic-format">Half-day · Webinar · L&L</div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-cat">Communication</div>
+          <div class="topic-name">The Courage to Have Hard Conversations</div>
+          <div class="topic-desc">Feedback, conflict, accountability — saying the hard thing well.</div>
+          <div class="topic-format">Half-day · Keynote · L&L</div>
+        </div>
+      </div>
+      <div class="topic-row">
+        <div class="topic-card">
+          <div class="topic-cat">Teams & Culture</div>
+          <div class="topic-name">Building High-Performance Teams</div>
+          <div class="topic-desc">Trust, accountability, decision-making, shared norms. Soundwave-enabled.</div>
+          <div class="topic-format">Full-day · Offsite facilitation</div>
+        </div>
+        <div class="topic-card">
+          <div class="topic-cat">Personal Effectiveness</div>
+          <div class="topic-name">Knowing Your Strengths — And Using Them</div>
+          <div class="topic-desc">Soundwave-based. How you show up, how others experience you, your edge.</div>
+          <div class="topic-format">Half-day · Team workshop with debrief</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BREAKFAST TALKS -->
+    <div class="talks">
+      <div class="section-label">Breakfast Talk Ideas</div>
+
+      <div class="talk">
+        <div class="talk-num">1</div>
+        <div class="talk-body">
+          <div class="talk-title">The Accidental Manager: Why Great Performers Make Struggling Leaders</div>
+          <div class="talk-desc">We promote people to their level of incompetence — then wonder why the team suffers. What actually makes someone a good manager.</div>
+          <div class="talk-meta">60–90 mins · New managers, HR, senior leaders</div>
+        </div>
+      </div>
+
+      <div class="talk">
+        <div class="talk-num">2</div>
+        <div class="talk-body">
+          <div class="talk-title">From Bottleneck to Multiplier: Lead Without Being the Answer to Everything</div>
+          <div class="talk-desc">For leaders who can't stop being the go-to person. How to build teams that solve problems without you.</div>
+          <div class="talk-meta">60–90 mins · Senior managers, directors, founders</div>
+        </div>
+      </div>
+
+      <div class="talk">
+        <div class="talk-num">3</div>
+        <div class="talk-body">
+          <div class="talk-title">Stop Having the Same Conversation Twice: Feedback That Actually Changes Behaviour</div>
+          <div class="talk-desc">Most feedback doesn't land — not because people don't care, but because it's delivered wrong. Practical, interactive, immediately useful.</div>
+          <div class="talk-meta">75–90 mins · All managers · Works as L&L</div>
+        </div>
+      </div>
+
+      <div class="talk">
+        <div class="talk-num">4</div>
+        <div class="talk-body">
+          <div class="talk-title">AI Won't Take Your Job — But a Leader Who Uses AI Might</div>
+          <div class="talk-desc">A grounded, non-hype take on what AI means for leadership and team management. What to embrace, what to watch, how to prepare your people.</div>
+          <div class="talk-meta">60–90 mins · All levels · High demand in 2026</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DELIVERY -->
+    <div class="delivery">
+      <div class="section-label" style="margin-bottom:10px;">Delivery Formats</div>
+      <div class="delivery-inner">
+        <div class="del-item">
+          <div class="del-label">Formats</div>
+          <div class="del-val">Keynote · Breakfast talk · Lunch & Learn · Half-day workshop · Full-day programme · Offsite facilitation</div>
+        </div>
+        <div class="del-item">
+          <div class="del-label">Mode</div>
+          <div class="del-val">In-person · Virtual · Hybrid (Singapore + regional)</div>
+        </div>
+        <div class="del-item">
+          <div class="del-label">Languages</div>
+          <div class="del-val">English (primary) · Mandarin (conversational)</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
