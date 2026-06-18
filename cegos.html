@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,47 +16,36 @@
 @page { size: A4; margin: 0; }
 html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; }
 
-/* LAYOUT */
 .page { display: grid; grid-template-columns: 220px 1fr; min-height: 297mm; }
-
-/* LEFT COLUMN */
-.left { background: var(--navy); padding: 40px 28px; display: flex; flex-direction: column; gap: 32px; }
-
+@media screen { .page + .page { margin-top: 12mm; } }
+@media print { .page { break-after: page; } .page:last-child { break-after: auto; } }
+.page-num { text-align: right; font-size: 9px; color: rgba(255,255,255,0.3); margin-top: 8px; }
+.left { background: var(--navy); padding: 36px 28px; display: flex; flex-direction: column; gap: 26px; }
 .logo { font-family: var(--serif); font-size: 22px; color: #fff; letter-spacing: 0.02em; }
 .logo span { color: var(--gold); }
-
 .name-block { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; }
 .name { font-family: var(--serif); font-size: 26px; font-weight: 400; color: #fff; line-height: 1.15; margin-bottom: 6px; }
 .title { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; line-height: 1.6; text-transform: uppercase; }
-
 .left-section { }
 .left-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
-
 .cred { display: flex; gap: 8px; margin-bottom: 10px; align-items: flex-start; }
 .cred-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
 .cred-text { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1.55; }
-
 .client-grid { display: flex; flex-wrap: wrap; gap: 6px; }
 .client-tag { font-size: 10px; font-weight: 400; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.12); padding: 3px 8px; }
-
 .contact { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 .contact-item { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
 .contact-val { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.75); }
 
-/* RIGHT COLUMN */
-.right { padding: 40px 36px; display: flex; flex-direction: column; gap: 28px; }
-
+.right { padding: 36px 36px; display: flex; flex-direction: column; gap: 22px; }
 .top-line { border-bottom: 1px solid var(--border); padding-bottom: 20px; }
 .top-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
 .top-line p { font-family: var(--serif); font-size: 15.5px; color: var(--ink); line-height: 1.7; }
 .top-line strong { color: var(--teal); font-weight: 500; }
 
-/* TOPICS */
 .topics-section { }
 .section-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
-
 .topic-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-
 .topic-card { border: 0.5px solid var(--border); padding: 12px 14px; position: relative; }
 .topic-card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(--teal); }
 .topic-cat { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
@@ -63,7 +53,6 @@ html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); backgrou
 .topic-desc { font-size: 11px; font-weight: 300; color: var(--muted); line-height: 1.55; }
 .topic-format { font-size: 10px; font-weight: 400; color: var(--teal); margin-top: 6px; }
 
-/* BREAKFAST TALKS */
 .talks { }
 .talk { border-bottom: 0.5px solid var(--border); padding: 11px 0; display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; }
 .talk:last-child { border-bottom: none; }
@@ -73,7 +62,6 @@ html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); backgrou
 .talk-desc { font-size: 11px; font-weight: 300; color: var(--muted); line-height: 1.55; }
 .talk-meta { font-size: 10px; color: var(--teal); margin-top: 3px; }
 
-/* DELIVERY */
 .delivery { background: var(--teal-soft); border: 0.5px solid var(--border); padding: 14px 16px; }
 .delivery-inner { display: flex; gap: 24px; }
 .del-item { flex: 1; }
@@ -83,16 +71,12 @@ html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); backgrou
 </head>
 <body>
 <div class="page">
-
-  <!-- LEFT -->
   <div class="left">
     <div class="logo">180co<span>.</span></div>
-
     <div class="name-block">
       <div class="name">Trudi<br>Chong</div>
       <div class="title">Facilitator & Executive Coach<br>Founder, 180co.</div>
     </div>
-
     <div class="left-section">
       <div class="left-label">Credentials</div>
       <div class="cred"><div class="cred-dot"></div><div class="cred-text">ICF-ACC Certified Coach</div></div>
@@ -101,7 +85,6 @@ html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); backgrou
       <div class="cred"><div class="cred-dot"></div><div class="cred-text">20+ years in L&D across APAC</div></div>
       <div class="cred"><div class="cred-dot"></div><div class="cred-text">90%+ participant satisfaction across all programmes</div></div>
     </div>
-
     <div class="left-section">
       <div class="left-label">Past Clients</div>
       <div class="client-grid">
@@ -117,7 +100,6 @@ html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); backgrou
         <span class="client-tag">Cegos AP</span>
       </div>
     </div>
-
     <div class="left-section">
       <div class="left-label">Industries</div>
       <div class="cred"><div class="cred-dot"></div><div class="cred-text">Technology & Digital</div></div>
@@ -126,7 +108,6 @@ html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); backgrou
       <div class="cred"><div class="cred-dot"></div><div class="cred-text">Government & Public Sector</div></div>
       <div class="cred"><div class="cred-dot"></div><div class="cred-text">Professional Services</div></div>
     </div>
-
     <div class="contact">
       <div class="contact-item">Email</div>
       <div class="contact-val">trudi.chong@gmail.com</div>
@@ -134,17 +115,11 @@ html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); backgrou
       <div class="contact-val">180co.sg</div>
     </div>
   </div>
-
-  <!-- RIGHT -->
   <div class="right">
-
-    <!-- TOP LINE -->
     <div class="top-line">
       <div class="top-label">About Trudi</div>
       <p>Trudi Chong is a facilitator, executive coach, and L&D strategist who has spent 20+ years helping organisations build the leadership and communication capability they actually need — not the programmes they think they need. She combines <strong>deep facilitation craft</strong> with <strong>real business credibility</strong>, having built L&D functions from scratch at Airbnb, Meta, and GovTech. She is direct, engaging, and obsessively practical.</p>
     </div>
-
-    <!-- FACILITATION TOPICS -->
     <div class="topics-section">
       <div class="section-label">Facilitation Topics</div>
       <div class="topic-row">
@@ -190,50 +165,66 @@ html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); backgrou
         </div>
       </div>
     </div>
-
-    <!-- BREAKFAST TALKS -->
     <div class="talks">
       <div class="section-label">Breakfast Talk Ideas</div>
-
       <div class="talk">
         <div class="talk-num">1</div>
         <div class="talk-body">
           <div class="talk-title">The Accidental Manager: Why Great Performers Make Struggling Leaders</div>
-          <div class="talk-desc">We promote people to their level of incompetence — then wonder why the team suffers. What actually makes someone a good manager.</div>
+          <div class="talk-desc">Most organisations promote on performance, not people-leadership readiness, then act surprised when strong performers struggle to lead. This session unpacks the four shifts every new manager must make and what separates those who make the leap from those who stay stuck. Participants leave with a self-diagnostic, a first-90-days reference, and one concrete behaviour to try next.</div>
           <div class="talk-meta">60–90 mins · New managers, HR, senior leaders</div>
         </div>
       </div>
-
       <div class="talk">
         <div class="talk-num">2</div>
         <div class="talk-body">
           <div class="talk-title">From Bottleneck to Multiplier: Lead Without Being the Answer to Everything</div>
-          <div class="talk-desc">For leaders who can't stop being the go-to person. How to build teams that solve problems without you.</div>
+          <div class="talk-desc">For leaders who've become the person everyone routes around — the one whose calendar is full because nothing moves without them. This session reframes being indispensable as a leadership failure, not a strength, and introduces a quick decision-delegation test for whether something should go to you, your team, or be handled by policy. Using a short worksheet to map their own recurring requests, participants identify at least two or three decisions or tasks they can hand off this week, and leave with language ready to use the next time someone tries to escalate something back to them.</div>
           <div class="talk-meta">60–90 mins · Senior managers, directors, founders</div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
+<div class="page">
+  <div class="left">
+    <div class="logo">180co<span>.</span></div>
+    <div class="name-block">
+      <div class="name">Trudi<br>Chong</div>
+      <div class="title">Facilitator & Executive Coach<br>Founder, 180co.</div>
+    </div>
+    <div class="left-section">
+      <div class="left-label">Breakfast Talks</div>
+      <div class="cred"><div class="cred-dot"></div><div class="cred-text">Continued from page 1 — talks 3 and 4, plus delivery formats.</div></div>
+    </div>
+    <div class="contact">
+      <div class="contact-item">Email</div>
+      <div class="contact-val">trudi.chong@gmail.com</div>
+      <div style="margin-top:8px;" class="contact-item">Website</div>
+      <div class="contact-val">180co.sg</div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="talks" style="margin-top: 4px;">
+      <div class="section-label">Breakfast Talk Ideas (continued)</div>
       <div class="talk">
         <div class="talk-num">3</div>
         <div class="talk-body">
           <div class="talk-title">Stop Having the Same Conversation Twice: Feedback That Actually Changes Behaviour</div>
-          <div class="talk-desc">Most feedback doesn't land — not because people don't care, but because it's delivered wrong. Practical, interactive, immediately useful.</div>
+          <div class="talk-desc">Most feedback fails not because people don't care, but because of how it's delivered — vague, late, or buried in praise so it doesn't land. This highly interactive session introduces a situation–behaviour–impact–ask structure and has participants practise it live in pairs, drafting and rehearsing one piece of real, overdue feedback they need to deliver. Everyone leaves with a printable quick-reference card and, more importantly, an actual conversation prepped and ready to have within the week — not just a framework.</div>
           <div class="talk-meta">75–90 mins · All managers · Works as L&L</div>
         </div>
       </div>
-
       <div class="talk">
         <div class="talk-num">4</div>
         <div class="talk-body">
           <div class="talk-title">AI Won't Take Your Job — But a Leader Who Uses AI Might</div>
-          <div class="talk-desc">A grounded, non-hype take on what AI means for leadership and team management. What to embrace, what to watch, how to prepare your people.</div>
+          <div class="talk-desc">A grounded, non-hype look at what AI actually changes for people leadership — not coding or automation hype, but what it means for how managers coach, communicate, and develop their teams when AI can do more of the "easy" parts of the job. The session maps where AI genuinely helps and where it can't replace a leader's judgment on things like feedback, coaching, and culture, surfacing low-risk ways to start using it as a thinking partner. Participants leave with reduced anxiety about AI replacing their leadership role and one specific AI-assisted habit to try in the next two weeks — using it to prep for a hard conversation, for instance, not to have it for them.</div>
           <div class="talk-meta">60–90 mins · All levels · High demand in 2026</div>
         </div>
       </div>
-
     </div>
-
-    <!-- DELIVERY -->
     <div class="delivery">
       <div class="section-label" style="margin-bottom:10px;">Delivery Formats</div>
       <div class="delivery-inner">
@@ -251,7 +242,6 @@ html, body { width: 210mm; min-height: 297mm; font-family: var(--sans); backgrou
         </div>
       </div>
     </div>
-
   </div>
 </div>
 </body>
